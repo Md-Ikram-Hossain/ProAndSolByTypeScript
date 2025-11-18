@@ -101,3 +101,4 @@ const users: User[] = [
 console.log(filterActiveUsers(users));
 
 /* --------------------------------------------------------------------- */
+
