@@ -40,7 +40,7 @@ function getLength(value: string | any[]): number {
 console.log(getLength('typescript'));    
 console.log(getLength([10, 20, 30, 40])); 
 
-/* --------------------------------------------------------------------- */
+
 
 class Person {
   name: string;
@@ -62,7 +62,7 @@ console.log(person1.getDetails());
 const person2 = new Person('Alice', 25);
 console.log(person2.getDetails());
 
-/* ---------------------------------------------------------------------- */
+
 type Item = {
   title: string;
   rating: number; 
@@ -80,7 +80,7 @@ const books: Item[] = [
 
 console.log(filterByRating(books));
 
-/* ------------------------------------------------------------------------- */
+
 type User = {
   id: number;
   name: string;
@@ -100,7 +100,7 @@ const users: User[] = [
 
 console.log(filterActiveUsers(users));
 
-/* --------------------------------------------------------------------- */
+
 
 interface Book {
   title: string;
@@ -124,3 +124,51 @@ const myBook: Book = {
 };
 
 printBookDetails(myBook);
+
+
+
+const getUniqueValues = (array1: number[], array2: number[]): number[] => {
+  const newArray: number[] = [];
+  for (let i = 0; i < array1.length; i++) {
+    const element = array1[i];
+    if (!newArray.includes(element)) {
+      newArray.push(element);
+    }
+  }
+  for (let i = 0; i < array2.length; i++) {
+    const element = array2[i];
+    if (!newArray.includes(element)) {
+      newArray.push(element);
+    }
+  }
+  return newArray;
+};
+
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+} 
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2));      
+
+
+
+
+const calculateTotalPrice = (products: Product[]): number => {
+  return products.reduce((total, item) => {
+    const base = item.price * item.quantity;
+    const discount = item.discount ? base * (item.discount / 100) : 0;
+    return total + (base - discount);
+  }, 0);
+};
+const products = [
+  { name: 'Pen', price: 10, quantity: 2 },
+  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
